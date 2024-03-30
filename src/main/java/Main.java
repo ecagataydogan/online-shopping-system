@@ -7,11 +7,9 @@ import java.math.BigDecimal;
 public class Main {
     public static void main(String[] args) {
         OnlineShoppingManager onlineShoppingManager = new OnlineShoppingManager();
-        onlineShoppingManager.displayInventory();
         onlineShoppingManager.displayCustomers();
         onlineShoppingManager.addCustomer(new Customer("Niyazi", 44));
-        onlineShoppingManager.displayCustomers();
-        onlineShoppingManager.filterCustomers('e');
+        onlineShoppingManager.filterCustomers('c');
         System.out.println(onlineShoppingManager.calculateTotalBillsForJuneCustomers());
         onlineShoppingManager.displayBills();
         onlineShoppingManager.displayBillsForThresholdAbove(BigDecimal.valueOf(1500L));

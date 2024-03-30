@@ -56,11 +56,11 @@ public class OnlineShoppingManager {
 
     public List<Customer> createRandomCustomers() {
         return new ArrayList<>(Arrays.asList(
-                new Customer("Cem", 26,LocalDate.of(2023,5,21)),
+                new Customer("Niyazi", 26,LocalDate.of(2023,5,21)),
                 new Customer("Cem", 28,LocalDate.of(2023,6,12)),
                 new Customer("Deniz", 32,LocalDate.of(2023,6,11)),
                 new Customer("Kaan", 44, LocalDate.of(2023,6,5)),
-                new Customer("Cem", 15, LocalDate.of(2023, 6, 9)))
+                new Customer("Abdulkadir", 15, LocalDate.of(2023, 6, 9)))
         );
     }
 
@@ -94,7 +94,7 @@ public class OnlineShoppingManager {
     public void displayBills() {
         System.out.println("Bill List:");
         bills
-                .forEach(System.out::println);
+                .forEach(bill -> System.out.println("Amount " + bill.getAmount() + " " + bill.getCustomer().getName()));
     }
 
 
@@ -180,12 +180,17 @@ public class OnlineShoppingManager {
     }
 
     public void displayBillsForThresholdBelow(BigDecimal threshold) {
-        System.out.println("Bills above " + threshold + " TL:");
+        System.out.println("Bills below " + threshold + " TL:");
+        int count = 0;
         for (Bill bill : bills) {
             BigDecimal amount = bill.getAmount();
             if (amount != null && amount.compareTo(threshold) < 0) {
                 System.out.println("Customer: " + bill.getCustomer().getName() + ", Amount: " + amount);
+                count++;
             }
+        }
+        if (count == 0) {
+            System.out.println("No bills below " + threshold + " TL" );
         }
     }
 
